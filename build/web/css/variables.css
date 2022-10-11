@@ -1,10 +1,20 @@
 /**
  * Do not edit directly
- * Generated on Mon, 10 Oct 2022 23:15:20 GMT
+ * Generated on Tue, 11 Oct 2022 13:30:28 GMT
  */
 
 :root {
-  --global-tertiary: #aec8e8;
-  --global-secondary: #f08f24;
-  --global-primary: #0e7ac0;
+  --global-separation-7: 96;
+  --global-separation-6: 48;
+  --global-separation-5: 32;
+  --global-separation-4: 24;
+  --global-separation-3: 16;
+  --global-separation-2: 8;
+  --global-separation-1: 4;
+  --global-color-brand-tertiary: #aec8e8;
+  --global-color-brand-secondary: #f08f24;
+  --global-color-brand-primary: #0e7ac0;
+  --global-color-tertiary: var(--global-color-brand-tertiary);
+  --global-color-secondary: var(--global-color-brand-secondary);
+  --global-color-primary: var(--global-color-brand-primary);
 }
