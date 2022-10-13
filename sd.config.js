@@ -17,7 +17,7 @@
 // StyleDictionary.buildAllPlatforms();
 
 const StyleDictionary = require("style-dictionary");
-const FIGMA_SET_NAME = "global";
+const FIGMA_SET_NAME = "szv";
 
 const figmaRefCorrection = (token) => {
   const { value, type } = token;
@@ -42,7 +42,6 @@ StyleDictionary.registerParser({
           result[`${key}`] = element;
         }
       }
-      console.log(result);
       return result;
     } catch (error) {
       console.log(error);
@@ -65,15 +64,16 @@ module.exports = {
   },
   platforms: {
     scss: {
-      transforms: [
-        `correction`,
-        `attribute/cti`,
-        `name/cti/kebab`,
-        `time/seconds`,
-        `content/icon`,
-        `size/rem`,
-        `color/css`,
-      ],
+      // transforms: [
+      //   `correction`,
+      //   `attribute/cti`,
+      //   `name/cti/kebab`,
+      //   `time/seconds`,
+      //   `content/icon`,
+      //   `size/rem`,
+      //   `color/css`,
+      // ],
+      transfromGroup: "scss",
       buildPath: "build/web/scss/",
       files: [
         {
@@ -92,19 +92,40 @@ module.exports = {
         },
       ],
     },
-    android: {
-      transforms: [
-        `attribute/cti`,
-        `name/cti/snake`,
-        `color/hex`,
-        `size/remToSp`,
-        `size/remToDp`,
-      ],
-      buildPath: "build/android/src/main/res/values",
+    css: {
+      transfromGroup: "css",
+      buildPath: "build/web/css/",
       files: [
         {
-          destination: "colors.xml",
-          format: "android/colors",
+          destination: "variables.css",
+          format: "css/variables",
+          options: {
+            outputReferences: true,
+          },
+        },
+        {
+          destination: "font.css",
+          format: "css/fonts.css",
+          options: {
+            outputReferences: true,
+          },
+        },
+      ],
+    },
+    js: {
+      transfromGroup: "js",
+      buildPath: "build/web/js/",
+      files: [
+        {
+          destination: "variables.js",
+          format: "javascript/es6",
+          options: {
+            outputReferences: true,
+          },
+        },
+        {
+          destination: "variables.d.ts",
+          format: "typescript/es6-declarations",
         },
       ],
     },
