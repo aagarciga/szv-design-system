@@ -17,51 +17,51 @@
 // StyleDictionary.buildAllPlatforms();
 
 const StyleDictionary = require("style-dictionary");
-const FIGMA_SET_NAME = "szv";
+const FIGMA_SET_NAME = "global";
 
-const figmaRefCorrection = (token) => {
-  const { value, type } = token;
-  console.log(">>", value, type, token);
-  if (value.inclides("{")) {
-    return value.replace("{", `{${FIGMA_SET_NAME}.`);
-  }
+// const figmaRefCorrection = (token) => {
+//   const { value, type } = token;
+//   console.log(">>", value, type, token);
+//   if (value.inclides("{")) {
+//     return value.replace("{", `{${FIGMA_SET_NAME}.`);
+//   }
 
-  return value;
-};
+//   return value;
+// };
 
-StyleDictionary.registerParser({
-  pattern: /\json$/,
-  parse: ({ contents, filePath }) => {
-    try {
-      const object = JSON.parse(contents);
-      const result = {};
+// StyleDictionary.registerParser({
+//   pattern: /\json$/,
+//   parse: ({ contents, filePath }) => {
+//     try {
+//       const object = JSON.parse(contents);
+//       const result = {};
 
-      for (const key in object) {
-        if (object.hasOwnProperty(key)) {
-          const element = object[key];
-          result[`${key}`] = element;
-        }
-      }
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-});
+//       for (const key in object) {
+//         if (object.hasOwnProperty(key)) {
+//           const element = object[key];
+//           result[`${key}`] = element;
+//         }
+//       }
+//       return result;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   },
+// });
 
 module.exports = {
   source: [`tokens/**/*.@(json|json5)`],
-  transform: {
-    correction: {
-      type: "value",
-      transitive: true,
-      matcher: (token) => {},
-      transformer: figmaRefCorrection,
-    },
-    "color/css": Object.assign({}, StyleDictionary.transform[`color/css`], {
-      transitive: true,
-    }),
-  },
+  // transform: {
+  //   correction: {
+  //     type: "value",
+  //     transitive: true,
+  //     matcher: (token) => {},
+  //     transformer: figmaRefCorrection,
+  //   },
+  //   "color/css": Object.assign({}, StyleDictionary.transform[`color/css`], {
+  //     transitive: true,
+  //   }),
+  // },
   platforms: {
     scss: {
       // transforms: [
@@ -73,7 +73,7 @@ module.exports = {
       //   `size/rem`,
       //   `color/css`,
       // ],
-      transfromGroup: "scss",
+      transformGroup: "scss",
       buildPath: "build/web/scss/",
       files: [
         {
@@ -93,7 +93,7 @@ module.exports = {
       ],
     },
     css: {
-      transfromGroup: "css",
+      transformGroup: "css",
       buildPath: "build/web/css/",
       files: [
         {
@@ -104,7 +104,7 @@ module.exports = {
           },
         },
         {
-          destination: "font.css",
+          destination: "fonts.css",
           format: "css/fonts.css",
           options: {
             outputReferences: true,
@@ -113,7 +113,7 @@ module.exports = {
       ],
     },
     js: {
-      transfromGroup: "js",
+      transformGroup: "js",
       buildPath: "build/web/js/",
       files: [
         {
