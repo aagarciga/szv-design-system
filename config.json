@@ -2,7 +2,15 @@
   "source": ["tokens/**/*.json"],
   "platforms": {
     "scss": {
-      "transformGroup": "scss",
+      "transforms": [
+        "attribute/cti",
+        "name/cti/kebab",
+        "time/seconds",
+        "content/icon",
+        "size/rem",
+        "color/css",
+        "value/ref/correction"
+      ],
       "buildPath": "build/web/scss/",
       "files": [
         {

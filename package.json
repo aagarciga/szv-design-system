@@ -1,0 +1,28 @@
+{
+  "name": "szv-design-system",
+  "version": "1.0.0",
+  "description": "SZV Design System Project.",
+  "main": "index.js",
+  "scripts": {
+    "build": "style-dictionary build --config ./sd.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aagarciga/szv-design-system.git"
+  },
+  "keywords": [
+    "tokens",
+    "design",
+    "system"
+  ],
+  "author": "Alex Alvarez Gárciga <aagarciga@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aagarciga/szv-design-system/issues"
+  },
+  "homepage": "https://github.com/aagarciga/szv-design-system#readme",
+  "devDependencies": {
+    "style-dictionary": "^3.7.1"
+  }
+}
