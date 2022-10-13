@@ -92,6 +92,19 @@ module.exports = {
         },
       ],
     },
+    less: {
+      transformGroup: "less",
+      buildPath: "build/web/less/",
+      files: [
+        {
+          destination: "_variables.less",
+          format: "less/variables",
+          options: {
+            outputReferences: true,
+          },
+        },
+      ],
+    },
     css: {
       transformGroup: "css",
       buildPath: "build/web/css/",
